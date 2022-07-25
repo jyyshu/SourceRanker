@@ -28,12 +28,12 @@ research student in acute myeloid leukemia research, literature searches can oft
 and arduous process. Often times, I had hoped for a tool or application that would aid me in this venture, as existing
 methods online would either be too general or too specific for my needs. Therefore, I hope to create a literature ranking
 search application that would offer enough personalization and custom settings that would not only cater towards the needs of the many while 
-also being precise enough for the needs of specific indivduals or groups. In general, I aim to
+also being precise enough for the needs of specific individuals or groups. In general, I aim to
 expedite and simplify the literature searching process and hopefully help others who may encounter 
 similar difficulties that I have addressed already
 
 ## User Stories
-- As a user, I want to add my sources (in text form) to the application/tool
+- As a user, I want to add my sources (in text form) to the Source Ranker application/tool
 - As a user, I would like to see the list of sources already imported in the tool
 - As a user, I want to use a keyword/search term such as a gene name to compare the different sources
 - As a user, I would like to see the rankings based on the search term  
