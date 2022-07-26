@@ -33,7 +33,7 @@ expedite and simplify the literature searching process and hopefully help others
 similar difficulties that I have addressed already
 
 ## User Stories
-- As a user, I want to add my sources (in text form) to the Source Ranker application/tool
-- As a user, I would like to see the list of sources already imported in the tool
-- As a user, I want to use a keyword/search term such as a gene name to compare the different sources
-- As a user, I would like to see the rankings based on the search term  
+- As a user, I want to input multiple parameters/keywords to assess the rank score for each source (one after another)
+- As a user, I would like to view the list of sources already imported in the tool
+- As a user, I want to view the title of each source in the ranked list
+- As a user, I would like to see the individual rank scores of each source in the ranked list (with a larger rank score indicating higher importance)

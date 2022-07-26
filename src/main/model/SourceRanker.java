@@ -24,6 +24,11 @@ public class SourceRanker {
         return true;
     }
 
+    // EFFECTS: returns the list of sources
+    public ArrayList<Source> getSourceList() {
+        return sourcesList;
+    }
+
     // EFFECTS: returns the size of the source list
     public int sourceListSize() {
         return sourcesList.size();
@@ -42,7 +47,7 @@ public class SourceRanker {
         }
     }
 
-    // EFFECTS: if the given idenfitifier matches any of the identifier for a source in the list,
+    // EFFECTS: if the given identifier matches any of the identifier for a source in the list,
     //          returns the rank for the source. If no matches are found, return -999.
     public int getIndividualSourceRank(String i) {
         for (Source s : sourcesList) {

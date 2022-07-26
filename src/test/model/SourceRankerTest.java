@@ -67,7 +67,6 @@ public class SourceRankerTest {
         assertEquals(sourceRankerTest.sourceListSize(), 1);
         assertTrue(sourceRankerTest.addSource(aml));
         assertEquals(sourceRankerTest.sourceListSize(), 2);
-
     }
 
     @Test
@@ -77,7 +76,16 @@ public class SourceRankerTest {
         assertEquals(sourceRankerTest.sourceListSize(), 1);
         assertFalse(sourceRankerTest.addSource(myc));
         assertEquals(sourceRankerTest.sourceListSize(), 1);
+    }
 
+    @Test
+    public void getSourceListTest() {
+        assertEquals(sourceRankerTest.sourceListSize(), 0);
+        assertTrue(sourceRankerTest.addSource(myc));
+        assertEquals(sourceRankerTest.sourceListSize(), 1);
+        assertTrue(sourceRankerTest.addSource(aml));
+        assertEquals(sourceRankerTest.sourceListSize(), 2);
+        assertEquals(sourceRankerTest.getSourceList().size(), sourceRankerTest.sourceListSize());
     }
 
     @Test
@@ -99,5 +107,24 @@ public class SourceRankerTest {
         assertEquals(sourceRankerTest.getIndividualSourceRank("ras"), -999);
         sourceRankerTest.rankingSystemForCourse("human");
         assertEquals(sourceRankerTest.getIndividualSourceRank("myc"), 3);
+    }
+
+    @Test
+    public void getIndividualSourceRankTest() {
+        assertEquals(sourceRankerTest.sourceListSize(), 0);
+        assertTrue(sourceRankerTest.addSource(myc));
+        assertEquals(sourceRankerTest.sourceListSize(), 1);
+        assertTrue(sourceRankerTest.addSource(aml));
+        assertEquals(sourceRankerTest.sourceListSize(), 2);
+        assertTrue(sourceRankerTest.addSource(photosynth));
+        assertEquals(sourceRankerTest.sourceListSize(), 3);
+        sourceRankerTest.rankingSystemForCourse("AML");
+        assertEquals(sourceRankerTest.getIndividualSourceRank("myc"), 1);
+        assertEquals(sourceRankerTest.getIndividualSourceRank("aml"), 1);
+        sourceRankerTest.rankingSystemForCourse("AMLASLKDJ");
+        assertEquals(sourceRankerTest.getIndividualSourceRank("myc"), 1);
+        sourceRankerTest.rankingSystemForCourse("leukemia");
+        assertEquals(sourceRankerTest.getIndividualSourceRank("myc"), 2);
+        assertEquals(sourceRankerTest.getIndividualSourceRank("ras"), -999);
     }
 }
