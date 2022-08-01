@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +12,12 @@ public class SourceTest {
     private Source photosynth;
     private Source flowering;
     private Source ras;
+    private Source abc;
+    private String ident;
+    private String title;
+    private String body;
+    private int rank;
+
 
     @BeforeEach
     public void setUp() {
@@ -56,6 +63,10 @@ public class SourceTest {
                         "c-MYC (MYC) that increase MYC activity and position MYC as a critical effector of " +
                         "RAS-driven cancer.",
                 0);
+
+        abc = new Source("abc", "abcd", "abcde", 1);
+
+
     }
 
     @Test
@@ -86,6 +97,5 @@ public class SourceTest {
     public void incrRankTest() {
         assertEquals(myc.incrRank(), 1);
     }
-
 }
 

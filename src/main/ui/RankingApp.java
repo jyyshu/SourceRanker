@@ -2,26 +2,41 @@ package ui;
 
 import model.Source;
 import model.SourceRanker;
+import persistence.SourceRankerReader;
+import persistence.SourceRankerWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
 
 // some features based on Teller app; link below
 // https://github.students.cs.ubc.ca/CPSC210/TellerApp
+
+// persistence features largely based on JsonSerializationDemo; link below
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
 // A representation of a literature source ranking application
 public class RankingApp {
+    private static final String JSON_SAVE = "./data/sourceranking.json";
     private Scanner input;
     private SourceRanker rankList;
+    private SourceRankerReader sourceRankerReader;
+    private SourceRankerWriter sourceRankerWriter;
 
     // EFFECTS: initializes the ranking application
     public RankingApp() {
+        input = new Scanner(System.in);
+        rankList = new SourceRanker();
+        sourceRankerReader = new SourceRankerReader(JSON_SAVE);
+        sourceRankerWriter = new SourceRankerWriter(JSON_SAVE);
         startRanking();
     }
 
     // MODIFIES: this
     // EFFECTS: starts ranking application and handles any inputs from user
     private void startRanking() {
-        System.out.println("Please input parameter to perform ranking or 'view' list?");
+        System.out.println("Welcome to the Ranking app! Please input an option");
         boolean keepGoing = true;
         String command = null;
 
@@ -49,8 +64,14 @@ public class RankingApp {
             createSource();
         } else if (command.equals("Remove")) {
             removeSource();
-        } else {
+        } else if (command.equals("Save")) {
+            saveSources();
+        } else if (command.equals("Load")) {
+            loadSources();
+        } else if (command.equals("Rank")) {
             completeRanking();
+        } else {
+            System.out.print("Please enter a valid option");
         }
     }
 
@@ -137,6 +158,8 @@ public class RankingApp {
         System.out.println("\tImport -> add new source");
         System.out.println("\tView -> view list");
         System.out.println("\tRemove -> remove a source from list");
+        System.out.println("\tSave -> save sources in list");
+        System.out.println("\tLoad -> load saved sources");
         System.out.println("\tQuit -> exit program");
     }
 
@@ -183,6 +206,26 @@ public class RankingApp {
             listRankings();
         } else {
             System.out.println("Please enter a number larger than 0");
+        }
+    }
+
+    private void saveSources() {
+        try {
+            sourceRankerWriter.openWriter();
+            sourceRankerWriter.write(rankList);
+            sourceRankerWriter.quitWriter();
+            System.out.println("Saved sources to " + JSON_SAVE + "!");
+        } catch (FileNotFoundException fnfe) {
+            System.out.println("Cannot save sources to " + JSON_SAVE);
+        }
+    }
+
+    private void loadSources() {
+        try {
+            rankList = sourceRankerReader.read();
+            System.out.println("Loaded saved sources from " + JSON_SAVE);
+        } catch (IOException ioe) {
+            System.out.println("Cant load sources from" + JSON_SAVE);
         }
     }
 }

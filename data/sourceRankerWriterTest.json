@@ -1,0 +1,20 @@
+{"sources": [
+    {
+        "ident": "matcha",
+        "rank": 100,
+        "title": "Green Tea",
+        "body": "Drinking green tea is good for you!"
+    },
+    {
+        "ident": "cherry",
+        "rank": 7,
+        "title": "Hanami",
+        "body": "Cherry Blossom viewing season is here"
+    },
+    {
+        "ident": "abc",
+        "rank": 1,
+        "title": "Alphabet",
+        "body": "abcdefghijklmnopqrstuvwxyz"
+    }
+]}

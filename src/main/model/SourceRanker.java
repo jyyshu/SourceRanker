@@ -1,10 +1,13 @@
 package model;
 
+import persistence.SourceRankerWritable;
+
 import java.util.ArrayList;
 
-// A representation of the list of sources to be ranked
-public class SourceRanker {
+import org.json.*;
 
+// A representation of the list of sources to be ranked
+public class SourceRanker implements SourceRankerWritable {
     private ArrayList<Source> sourcesList;
 
     public SourceRanker() {
@@ -35,6 +38,7 @@ public class SourceRanker {
             return false;
         }
     }
+
 
     // EFFECTS: returns the list of sources
     public ArrayList<Source> getSourceList() {
@@ -68,5 +72,24 @@ public class SourceRanker {
             }
         }
         return -999;
+    }
+
+    // EFFECTS: returns new JSON Object
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("sources", sourcesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns sources in source ranker as a JSON array
+    private JSONArray sourcesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Source s : sourcesList) {
+            jsonArray.put(s.toJson());
+        }
+
+        return jsonArray;
     }
 }

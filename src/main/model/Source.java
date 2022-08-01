@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.SourceRankerWritable;
+
 // A representation of a source with a given identifier, title, text body and rank score
-public class Source {
+public class Source implements SourceRankerWritable {
     private String ident;
     private String title;
     private String body;
@@ -40,5 +43,16 @@ public class Source {
     // EFFECTS: returns rank score of the source
     public int getRank() {
         return rank;
+    }
+
+    // EFFECTS: returns new JSONObject
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("ident", ident);
+        json.put("title", title);
+        json.put("body", body);
+        json.put("rank", rank);
+        return json;
     }
 }
