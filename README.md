@@ -37,3 +37,6 @@ similar difficulties that I have addressed already
 - As a user, I would like to view the list of sources already imported in the tool showing each source title and rank score (with a larger rank score indicating higher importance)
 - As a user, I want to add multiple sources to be ranked within the application
 - As a user, I want to remove a source from the list of sources based on its position within the list
+
+- As a user, I want to have the ability to save the list of sources that I have imported at any point
+- As a user, I want to be able to choose to re-load my source list that I previously saved from file
