@@ -34,6 +34,6 @@ similar difficulties that I have addressed already
 
 ## User Stories
 - As a user, I want to input multiple parameters/keywords to assess the rank score for each source (one after another)
-- As a user, I would like to view the list of sources already imported in the tool
-- As a user, I want to view the title of each source in the ranked list
-- As a user, I would like to see the individual rank scores of each source in the ranked list (with a larger rank score indicating higher importance)
+- As a user, I would like to view the list of sources already imported in the tool showing each source title and rank score (with a larger rank score indicating higher importance)
+- As a user, I want to add multiple sources to be ranked within the application
+- As a user, I want to remove a source from the list of sources based on its position within the list

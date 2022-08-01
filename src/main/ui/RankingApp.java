@@ -45,8 +45,12 @@ public class RankingApp {
     private void completeCommand(String command) {
         if (command.equals("View")) {
             listRankings();
+        } else if (command.equals("Import")) {
+            createSource();
+        } else if (command.equals("Remove")) {
+            removeSource();
         } else {
-            completeRanking(command);
+            completeRanking();
         }
     }
 
@@ -130,22 +134,55 @@ public class RankingApp {
     // EFFECTS: shows all possible options for input commands to user
     private void showOptions() {
         System.out.println("\tRank -> enter any parameter/keyword");
+        System.out.println("\tImport -> add new source");
         System.out.println("\tView -> view list");
+        System.out.println("\tRemove -> remove a source from list");
         System.out.println("\tQuit -> exit program");
     }
 
     // EFFECTS: allows viewers to view list of sources with rank score and title
     private void listRankings() {
         for (Source s : rankList.getSourceList()) {
-            System.out.println(s.getRank() + " " + s.getTitle());
+            System.out.println("RANK: " + s.getRank() + " " + s.getTitle());
         }
     }
 
     // MODIFIES: this
     // EFFECTS: executes the ranking of sources based on the parameter/keyword the
     //          user had specified and displays the ranked list
-    private void completeRanking(String command) {
-        rankList.rankingSystemForCourse(command);
+    private void completeRanking() {
+        System.out.println("Enter keyword/parameter to a perform ranking");
+        String keyword = input.next();
+        rankList.rankingSystemForCourse(keyword);
         listRankings();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: imports a new source based on user entered information (identifier, title and text body of source),
+    //          and initializes rank score of newly imported source to value of 0.
+    private void createSource() {
+        System.out.println("Please enter an identifier for the source");
+        String ident = input.next();
+        System.out.println("Please enter the title of the source");
+        String title = input.next();
+        System.out.println("Please enter the text body of the source");
+        String body = input.next();
+
+        Source newSource = new Source(ident, title, body, 0);
+
+        rankList.addSource(newSource);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: removes a source based on user input of position within list (index 1), input + 1 must be greater than 0
+    private void removeSource() {
+        System.out.println("Please enter number to remove source from list");
+        int index = input.nextInt() - 1;
+        if (index + 1 > 0) {
+            rankList.removeSource(index);
+            listRankings();
+        } else {
+            System.out.println("Please enter a number larger than 0");
+        }
     }
 }

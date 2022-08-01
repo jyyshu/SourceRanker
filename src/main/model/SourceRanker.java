@@ -24,6 +24,18 @@ public class SourceRanker {
         return true;
     }
 
+    // MODIFIES: this
+    // EFFECTS: removes a source in a given index and returns true if index provided is less the size of the exisiting
+    //          list, otherwise return false
+    public boolean removeSource(int index) {
+        if (index < sourcesList.size()) {
+            sourcesList.remove(index);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // EFFECTS: returns the list of sources
     public ArrayList<Source> getSourceList() {
         return sourcesList;

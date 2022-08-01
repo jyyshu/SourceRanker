@@ -79,6 +79,19 @@ public class SourceRankerTest {
     }
 
     @Test
+    public void removeSourceTest() {
+        assertEquals(sourceRankerTest.sourceListSize(), 0);
+        assertTrue(sourceRankerTest.addSource(myc));
+        assertEquals(sourceRankerTest.sourceListSize(), 1);
+        assertTrue(sourceRankerTest.addSource(aml));
+        assertEquals(sourceRankerTest.sourceListSize(), 2);
+        assertTrue(sourceRankerTest.removeSource(0));
+        assertEquals(sourceRankerTest.sourceListSize(), 1);
+        assertFalse(sourceRankerTest.removeSource(1));
+
+    }
+
+    @Test
     public void getSourceListTest() {
         assertEquals(sourceRankerTest.sourceListSize(), 0);
         assertTrue(sourceRankerTest.addSource(myc));
