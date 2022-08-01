@@ -209,6 +209,7 @@ public class RankingApp {
         }
     }
 
+    // EFFECTS: saves the ranked list of source (sourceranker) to file
     private void saveSources() {
         try {
             sourceRankerWriter.openWriter();
@@ -220,6 +221,8 @@ public class RankingApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: loads previously saved sourceranker from file
     private void loadSources() {
         try {
             rankList = sourceRankerReader.read();
