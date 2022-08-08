@@ -226,7 +226,7 @@ public class RankingUI extends JFrame implements ActionListener {
 
     // MODIFIES: this
     // EFFECTS: executes the ranking of sources based on the parameter/keyword the
-    //          user had specified
+    //          user had specified, indicates the best source (if same rank score, returns first in list)
     public void performRanking() {
         String inputParameter = JOptionPane.showInputDialog(null,
                 "Please input parameter/keyword to perform ranking",
@@ -234,7 +234,8 @@ public class RankingUI extends JFrame implements ActionListener {
                 JOptionPane.QUESTION_MESSAGE);
         rankList.rankingSystemForCourse(inputParameter);
         ImageIcon melonGIF = new ImageIcon("melon.gif");
-        JOptionPane.showMessageDialog(null, "Ranking Completed!", "Ranking", 0, melonGIF);
+        JOptionPane.showMessageDialog(null,
+                "Ranking Completed! The best source is: " + getLargestScore(), "Ranking", 0, melonGIF);
     }
 
     // MODIFIES: this
@@ -284,6 +285,7 @@ public class RankingUI extends JFrame implements ActionListener {
         addSourcePanel();
     }
 
+    // MODIFIES: this
     // EFFECTS: saves the ranked list of source (sourceranker) to file
     private void saveSources() {
         try {
@@ -315,13 +317,16 @@ public class RankingUI extends JFrame implements ActionListener {
         JOptionPane.showMessageDialog(null, "Sources Loaded!", "Load Sources", 0, melonGIF);
     }
 
-
-    public String getLargestScore(Source bestSource) {
+    // MODIFIES: this
+    // EFFECTS: returns the source title with the largest rank score, indicating the best source
+    // (if same rank score, returns first source in list)
+    public String getLargestScore() {
         int max = 0;
+        Source bestSource = new Source("", "", "", 0);
         for (Source s : rankList.getSourceList()) {
             if (s.getRank() > max) {
                 max = s.getRank();
-                s = bestSource;
+                bestSource = s;
             }
         }
         return bestSource.getTitle();
