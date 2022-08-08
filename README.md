@@ -40,3 +40,10 @@ similar difficulties that I have addressed already
 
 - As a user, I want to have the ability to save the list of sources that I have imported at any point
 - As a user, I want to be able to choose to re-load my source list that I previously saved from file
+
+## Instructions for Grader
+- You can generate the first required event by clicking "Add Source" or pressing Alt+A on the keyboard. This will create several consecutive pop-up windows to allow for one to add one or multiple sources to the ranking application
+- You can generate the first required event by clicking "Delete Source" or pressing Alt+D on the keyboard. This will create a pop-up window that will allow one to remove a source(s) of their choosing based on the 1-based index position of the list (1 is the top of the list)
+- You can locate the visual component by clicking "Rank List", "Save Sources" or "Load Sources" (or entering keyboard inputs: Alt + (R or S or L respectively)). After execution of each, a window will appear displaying a message and a gif of the melon mascot for the application.
+- You can save the state of my application by clicking the "Save Sources" button or pressing Alt+S on the keyboard
+- You can reload the state of my application by clicking the "Load Sources" button or pressing Alt+L on the keyboard
