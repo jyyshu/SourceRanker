@@ -160,32 +160,25 @@ public class RankingUI extends JFrame implements ActionListener {
         rankList.addSource(ras);
     }
 
-    @SuppressWarnings("methodlength")
+    // EFFECTS: helper used to reduce redundancy in making buttons
+    public JButton makeButton(String text, int keyEvent) {
+        JButton button = new JButton(text);
+        button.setMnemonic(keyEvent);
+        button.addActionListener(this);
+        return button;
+    }
+
     // EFFECTS: helper used to add buttons for user to choose options within application
     public void addButtonOptions() {
         JPanel buttons = new JPanel();
         buttons.setLayout(new BoxLayout(buttons, BoxLayout.Y_AXIS));
-        viewButton = new JButton("View List");
-        viewButton.setMnemonic(KeyEvent.VK_V);
-        viewButton.addActionListener(this);
-        rankButton = new JButton("Rank List");
-        rankButton.setMnemonic(KeyEvent.VK_R);
-        rankButton.addActionListener(this);
-        addButton = new JButton("Add Source");
-        addButton.setMnemonic(KeyEvent.VK_A);
-        addButton.addActionListener(this);
-        removeButton = new JButton("Delete Source");
-        removeButton.setMnemonic(KeyEvent.VK_D);
-        removeButton.addActionListener(this);
-        saveButton = new JButton("Save Sources");
-        saveButton.setMnemonic(KeyEvent.VK_S);
-        saveButton.addActionListener(this);
-        loadButton = new JButton("Load Sources");
-        loadButton.setMnemonic(KeyEvent.VK_L);
-        loadButton.addActionListener(this);
-        quitButton = new JButton("Quit");
-        quitButton.setMnemonic(KeyEvent.VK_Q);
-        quitButton.addActionListener(this);
+        viewButton = makeButton("View List", KeyEvent.VK_V);
+        rankButton = makeButton("Rank List", KeyEvent.VK_R);
+        addButton = makeButton("Add Source", KeyEvent.VK_A);
+        removeButton = makeButton("Delete Source", KeyEvent.VK_D);
+        saveButton = makeButton("Save Sources", KeyEvent.VK_S);
+        loadButton = makeButton("Load Sources", KeyEvent.VK_L);
+        quitButton = makeButton("Quit", KeyEvent.VK_Q);
         buttons.add(viewButton);
         buttons.add(rankButton);
         buttons.add(addButton);
@@ -235,7 +228,8 @@ public class RankingUI extends JFrame implements ActionListener {
         rankList.rankingSystemForCourse(inputParameter);
         ImageIcon melonGIF = new ImageIcon("melon.gif");
         JOptionPane.showMessageDialog(null,
-                "Ranking Completed! The best source is: " + getLargestScore(), "Ranking", 0, melonGIF);
+                "Ranking Completed! The best source is: " + getLargestScore(),
+                "Ranking: The best source is ...?", 0, melonGIF);
     }
 
     // MODIFIES: this
@@ -254,7 +248,6 @@ public class RankingUI extends JFrame implements ActionListener {
                 "Please input Text Body",
                 "Ranking Text Body",
                 JOptionPane.QUESTION_MESSAGE);
-
 
         Source newSource = new Source(ident, title, body, 0);
         rankList.addSource(newSource);
