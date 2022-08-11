@@ -1,5 +1,7 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.Source;
 import model.SourceRanker;
 import persistence.SourceRankerReader;
@@ -13,6 +15,9 @@ import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import javax.swing.ImageIcon;
+
+// Eventlogging: Event and EventLog classes re-used from AlarmSystem; link below
+// https://github.students.cs.ubc.ca/CPSC210/AlarmSystem
 
 // persistence features largely based on JsonSerializationDemo; link below
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
@@ -213,7 +218,16 @@ public class RankingUI extends JFrame implements ActionListener {
         } else if (ae.getSource() == loadButton) {
             loadSources();
         } else if (ae.getSource() == quitButton) {
+            printLogEvents(EventLog.getInstance());
             System.exit(0);
+        }
+    }
+
+    // EFFECTS: prints events that occur (adding and removing sources) to the console (initial 5 sources are printed
+    //          immediately to console first)
+    public void printLogEvents(EventLog ev) {
+        for (Event e : ev) {
+            System.out.println(e.toString());
         }
     }
 
@@ -285,9 +299,9 @@ public class RankingUI extends JFrame implements ActionListener {
             sourceRankerWriter.openWriter();
             sourceRankerWriter.write(rankList);
             sourceRankerWriter.quitWriter();
-            System.out.println("Saved sources to " + JSON_SAVE + "!");
+            // System.out.println("Saved sources to " + JSON_SAVE + "!");
         } catch (FileNotFoundException fnfe) {
-            System.out.println("Cannot save sources to " + JSON_SAVE);
+            // System.out.println("Cannot save sources to " + JSON_SAVE);
         }
         ImageIcon melonGIF = new ImageIcon("melon.gif");
         JOptionPane.showMessageDialog(null, "Sources Saved!", "Save Sources", 0, melonGIF);
@@ -298,13 +312,13 @@ public class RankingUI extends JFrame implements ActionListener {
     private void loadSources() {
         try {
             rankList = sourceRankerReader.read();
-            System.out.println("Loaded saved sources from " + JSON_SAVE);
+            //  System.out.println("Loaded saved sources from " + JSON_SAVE);
             window.removeAll();
             addSourceRankerLogo();
             addButtonOptions();
             addSourcePanel();
         } catch (IOException ioe) {
-            System.out.println("Cant load sources from" + JSON_SAVE);
+            //  System.out.println("Cant load sources from" + JSON_SAVE);
         }
         ImageIcon melonGIF = new ImageIcon("melon.gif");
         JOptionPane.showMessageDialog(null, "Sources Loaded!", "Load Sources", 0, melonGIF);

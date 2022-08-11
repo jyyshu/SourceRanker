@@ -47,3 +47,31 @@ similar difficulties that I have addressed already
 - You can locate the visual component by clicking "Rank List", "Save Sources" or "Load Sources" (or entering keyboard inputs: Alt + (R or S or L respectively)). After execution of each, a window will appear displaying a message and a gif of the melon mascot for the application.
 - You can save the state of my application by clicking the "Save Sources" button or pressing Alt+S on the keyboard
 - You can reload the state of my application by clicking the "Load Sources" button or pressing Alt+L on the keyboard
+
+## Phase 4: Task 2
+-Sample of events being logged *(Reminder: first 5 events logged are due to import/initialization of the 5 sources to be included when program starts )* 
+
+Thu Aug 11 11:32:54 PDT 2022<br />
+Added a new source to be ranked: myc<br />
+Thu Aug 11 11:32:54 PDT 2022<br />
+Added a new source to be ranked: aml<br />
+Thu Aug 11 11:32:54 PDT 2022<br />
+Added a new source to be ranked: photosynth<br />
+Thu Aug 11 11:32:54 PDT 2022<br />
+Added a new source to be ranked: flowering<br />
+Thu Aug 11 11:32:54 PDT 2022<br />
+Added a new source to be ranked: ras<br />
+Thu Aug 11 11:33:12 PDT 2022<br />
+Added a new source to be ranked: Cherry Blossom<br />
+Thu Aug 11 11:33:16 PDT 2022<br />
+Added a new source to be ranked: Melon<br />
+Thu Aug 11 11:33:22 PDT 2022<br />
+Removed the source: ras from the list of sources<br />
+Thu Aug 11 11:33:27 PDT 2022<br />
+Added a new source to be ranked: Jeremy<br />
+Thu Aug 11 11:33:36 PDT 2022<br />
+Removed the source: Jeremy from the list of sources<br />
+Thu Aug 11 11:33:45 PDT 2022<br />
+Added a new source to be ranked: Honeydew<br />
+
+Process finished with exit code 0

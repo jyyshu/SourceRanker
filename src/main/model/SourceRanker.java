@@ -24,6 +24,7 @@ public class SourceRanker implements SourceRankerWritable {
             }
         }
         sourcesList.add(s);
+        EventLog.getInstance().logEvent(new Event("Added a new source to be ranked: " + s.getIdentifier()));
         return true;
     }
 
@@ -32,7 +33,10 @@ public class SourceRanker implements SourceRankerWritable {
     //          list, otherwise return false
     public boolean removeSource(int index) {
         if (index < sourcesList.size()) {
+            EventLog.getInstance().logEvent(new Event("Removed the source: "
+                    + sourcesList.get(index).getIdentifier() + " from the list of sources"));
             sourcesList.remove(index);
+
             return true;
         } else {
             return false;
