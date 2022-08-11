@@ -75,3 +75,9 @@ Thu Aug 11 11:33:45 PDT 2022<br />
 Added a new source to be ranked: Honeydew<br />
 
 Process finished with exit code 0
+
+## Phase 4: Task 3
+If more time was provided for me to work on this project: 
+- I would likely alter the way I would add and remove sources using the addSource and removeSource methods in my SourceRanker class. Given they are essentially opposing methods I believe I would refactor both classes such that they both incorporate/operate upon the Source's identifier rather than indepently looking at the Source title for addSource and the index of the Source list in removeSource. 
+- I would also like to change the source list in SourceRanker to be a Collection rather than an ArrayList, as it would allow me to use a broader variety of implementations.
+- I would also include more exception handling in my methods within the RankingUI class in order to cover more cases where my application my run into unintended issues.
