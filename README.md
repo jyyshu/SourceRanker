@@ -77,6 +77,8 @@ Added a new source to be ranked: Honeydew<br />
 Process finished with exit code 0
 ## Phase 4: Task 3
 If more time was provided for me to work on this project: 
-- I would likely alter the way I would add and remove sources using the addSource and removeSource methods in my SourceRanker class. Given they are essentially opposing methods I believe I would refactor both classes such that they both incorporate/operate upon the Source's identifier rather than indepently looking at the Source title for addSource and the index of the Source list in removeSource. 
+- I would likely alter the way I would add and remove sources using the addSource and removeSource methods in my SourceRanker class. Given they are essentially opposing methods I believe I would refactor both classes such that they both incorporate/operate upon the Source's identifier rather than independently looking at the Source title for addSource and the index of the Source list in removeSource. 
 - I would also like to change the source list in SourceRanker to be a Collection rather than an ArrayList, as it would allow me to use a broader variety of implementations.
-- I would also include more exception handling in my methods within the RankingUI class in order to cover more cases where my application my run into unintended issues.
+- I would also include more exception handling in my methods within the RankingUI class in order to cover more cases where my application my run into unintended issues. 
+- I would also try to refactor by adding another class that handles the button panel as the RankingGUI classes is handling nearly the functionality. To add, I would remove duplication among the buttons by extracting similarities between each of the button methods (by creating a new method) and then calling the new method within each of the different button function methods. 
+
